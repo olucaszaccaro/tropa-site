@@ -2,7 +2,7 @@
 
 /* ---- CONFIG (preencher antes de publicar) ---- */
 const TROPA = {
-  whatsapp: "5500000000000",              // <-- TROCAR pelo seu número, formato 55DDDXXXXXXXXX
+  whatsapp: "5561994597000",              // WhatsApp da Tropa
   supabaseUrl: "https://aqkqcbjfmygtxogiznzd.supabase.co",
   supabaseAnonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFxa3FjYmpmbXlndHhvZ2l6bnpkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI2MTE1ODIsImV4cCI6MjA5ODE4NzU4Mn0.ZYaEjUlClzXV4ZMq8RF_TYDZTuQ2WxlTFvGt4sOBtiE",
 };

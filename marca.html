@@ -65,7 +65,7 @@
     <h2>Performance, não vaidade</h2>
     <div class="grid3">
       <div class="card"><h3>Operador</h3><p>Conduzida por quem vende de verdade no TikTok Shop — não por marketeiro que nunca vendeu.</p></div>
-      <div class="card"><h3>Transparência</h3><p>Painel aberto e split claro. Você acompanha cada real, em tempo real.</p></div>
+      <div class="card"><h3>Transparência</h3><p>Painel aberto, atribuição clara e resultados verificáveis. Você acompanha a operação sem caixa-preta.</p></div>
       <div class="card"><h3>Risco baixo</h3><p>Boa parte da nossa remuneração é performance. A gente cresce quando você vende.</p></div>
     </div>
   </section>
@@ -81,20 +81,20 @@
       <div>
         <form class="lead" data-table="leads_marca">
           <div class="row">
-            <div class="fld"><label>Empresa</label><input name="empresa" required placeholder="Nome da marca"></div>
-            <div class="fld"><label>Seu nome</label><input name="nome" required placeholder="Quem fala"></div>
+            <div class="fld"><label for="marca-empresa">Empresa</label><input id="marca-empresa" name="empresa" required placeholder="Nome da marca"></div>
+            <div class="fld"><label for="marca-nome">Seu nome</label><input id="marca-nome" name="nome" required placeholder="Quem fala"></div>
           </div>
           <div class="row">
-            <div class="fld"><label>Segmento</label>
-              <select name="segmento"><option value="">Selecione</option><option>Beleza & skincare</option><option>Casa & utilidades</option><option>Saúde & suplementos</option><option>Moda & acessórios</option><option>Eletrônicos</option><option>Outro</option></select>
+            <div class="fld"><label for="marca-segmento">Segmento</label>
+              <select id="marca-segmento" name="segmento"><option value="">Selecione</option><option>Beleza & skincare</option><option>Casa & utilidades</option><option>Saúde & suplementos</option><option>Moda & acessórios</option><option>Eletrônicos</option><option>Outro</option></select>
             </div>
-            <div class="fld"><label>Já vende no TikTok Shop?</label>
-              <select name="ja_vende"><option value="">Selecione</option><option>Sim</option><option>Ainda não</option><option>Em cadastro</option></select>
+            <div class="fld"><label for="marca-ja-vende">Já vende no TikTok Shop?</label>
+              <select id="marca-ja-vende" name="ja_vende"><option value="">Selecione</option><option>Sim</option><option>Ainda não</option><option>Em cadastro</option></select>
             </div>
           </div>
           <div class="row">
-            <div class="fld"><label>WhatsApp</label><input name="whatsapp" required placeholder="(00) 00000-0000"></div>
-            <div class="fld"><label>E-mail</label><input name="email" type="email" placeholder="voce@empresa.com"></div>
+            <div class="fld"><label for="marca-whatsapp">WhatsApp</label><input id="marca-whatsapp" name="whatsapp" required placeholder="(00) 00000-0000"></div>
+            <div class="fld"><label for="marca-email">E-mail</label><input id="marca-email" name="email" type="email" placeholder="voce@empresa.com"></div>
           </div>
           <button class="btn btn--lg" type="submit">Quero vender com creators</button>
         </form>
@@ -114,7 +114,14 @@
       <svg width="30" height="30" viewBox="0 0 130 130"><rect width="130" height="130" rx="30" fill="#191D23"/><g fill="none" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"><path d="M32 112 L65 82 L98 112" stroke="#0E9E6E"/><path d="M32 84 L65 54 L98 84" stroke="#12E29A"/><path d="M32 56 L65 26 L98 56" stroke="#FAFBF9"/></g></svg>
       tropa<span class="dot">.</span>
     </a>
-    <div class="meta">somostropa.com.br · @somos.tropa<br>Agência de creators · TikTok Shop · © 2026</div>
+    <div class="footer-right">
+      <div class="socials" aria-label="Redes sociais da Tropa">
+        <a href="https://www.instagram.com/tropa.agencia/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.tiktok.com/@tropa.agencia" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="https://www.linkedin.com/company/tropa-creators/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <div class="meta">@tropa.agencia · Agência de creators · TikTok Shop · © 2026</div>
+    </div>
   </div>
 </footer>
 

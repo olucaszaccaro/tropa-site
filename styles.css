@@ -73,6 +73,17 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .strip-track b{color:var(--green)}
 @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
+/* reconhecimento institucional */
+.recognition{display:grid;grid-template-columns:280px 1fr;gap:clamp(32px,6vw,84px);align-items:center;padding-block:56px;border-bottom:1px solid var(--line)}
+.recognition-mark{display:grid;grid-template-columns:auto auto;justify-content:start;align-items:baseline;column-gap:10px;color:var(--off);font-family:var(--display);line-height:1}
+.recognition-mark span{font-size:32px;font-weight:700;letter-spacing:-.035em}
+.recognition-mark strong{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:var(--ink);font-size:19px;letter-spacing:-.02em;padding:7px 8px;border-radius:7px}
+.recognition-mark small{grid-column:1/-1;margin-top:10px;color:var(--mut);font-family:var(--body);font-size:11px;line-height:1.4;letter-spacing:.03em}
+.recognition-copy{max-width:680px}
+.recognition-label{color:var(--green);font-size:13px;font-weight:700;margin-bottom:7px}
+.recognition h2{font-family:var(--display);font-size:clamp(25px,3vw,38px);line-height:1.08;letter-spacing:-.025em;text-wrap:balance}
+.recognition-copy>p:last-child{max-width:62ch;margin-top:12px;color:var(--mut);font-size:16px;line-height:1.65;text-wrap:pretty}
+
 /* sections */
 .section{padding-block:96px}
 .section h2{font-family:var(--display);font-weight:700;font-size:clamp(32px,4.4vw,52px);letter-spacing:-.02em;line-height:1.04;margin:14px 0 0}
@@ -254,6 +265,7 @@ footer .meta{font-family:var(--mono);font-size:13px;color:var(--mut);text-align:
 
 /* responsive */
 @media(max-width:900px){
+  .recognition{grid-template-columns:1fr;gap:24px}
   .mgrid{grid-template-columns:1fr 1fr}
   .case-hero{grid-template-columns:1fr;gap:30px;padding-top:38px}
   .case-hero .ch-photo{max-width:380px}
@@ -290,6 +302,8 @@ footer .meta{font-family:var(--mono);font-size:13px;color:var(--mut);text-align:
   .method-head{padding-inline:16px}
   .method-head .sub{font-size:10px}
   .section{padding-block:60px}
+  .recognition{padding-block:42px}
+  .recognition-mark span{font-size:28px}
   .section .intro{font-size:17px}
   .door{min-height:0;padding:28px 24px;border-radius:16px}
   .door h3{font-size:34px}

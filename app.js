@@ -20,7 +20,17 @@ async function saveLead(table, payload){
   // Se o Supabase estiver configurado, insere; senão, segue só com WhatsApp.
   if(TROPA.supabaseUrl && TROPA.supabaseAnonKey){
     try{
-      const res = await fetch(`${TROPA.supabaseUrl}/rest/v1/${table}`,{
+      const lead = {
+        tipo: table === "leads_marca" ? "marca" : "creator",
+        origem: payload.material ? "material" : "site",
+        nome: payload.nome || null,
+        email: payload.email || null,
+        whatsapp: payload.whatsapp || null,
+        empresa: payload.empresa || null,
+        tiktok: payload.tiktok || null,
+        dados: payload
+      };
+      const res = await fetch(`${TROPA.supabaseUrl}/rest/v1/crm_leads`,{
         method:"POST",
         headers:{
           "Content-Type":"application/json",
@@ -28,7 +38,7 @@ async function saveLead(table, payload){
           "Authorization":`Bearer ${TROPA.supabaseAnonKey}`,
           "Prefer":"return=minimal"
         },
-        body:JSON.stringify(payload)
+        body:JSON.stringify(lead)
       });
       return res.ok;
     }catch(e){ console.warn("Supabase:",e); return false; }

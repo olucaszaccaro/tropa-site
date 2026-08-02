@@ -1,0 +1,29 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "painel.somostropa.com.br"
+        }
+      ],
+      "destination": "/painel.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/painel.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    }
+  ]
+}

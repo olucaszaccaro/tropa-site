@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Painel de leads · Tropa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="painel.css">
+</head>
+<body>
+  <main id="login-view" class="login-shell">
+    <section class="login-panel" aria-labelledby="login-title">
+      <a class="brand" href="https://www.somostropa.com.br" aria-label="Tropa">
+        <svg width="38" height="38" viewBox="0 0 130 130" aria-hidden="true"><rect width="130" height="130" rx="30" fill="#191D23"/><g fill="none" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"><path d="M32 112 L65 82 L98 112" stroke="#0E9E6E"/><path d="M32 84 L65 54 L98 84" stroke="#12E29A"/><path d="M32 56 L65 26 L98 56" stroke="#FAFBF9"/></g></svg>
+        tropa<span>.</span>
+      </a>
+      <div>
+        <h1 id="login-title">Painel de leads</h1>
+        <p>Entre com sua conta administrativa da Tropa.</p>
+      </div>
+      <form id="login-form">
+        <label>E-mail<input name="email" type="email" autocomplete="username" required placeholder="voce@somostropa.com.br"></label>
+        <label>Senha<input name="password" type="password" autocomplete="current-password" required placeholder="Sua senha"></label>
+        <p id="login-error" class="error" role="alert"></p>
+        <button type="submit">Entrar no painel</button>
+      </form>
+      <small>Acesso restrito · Os dados dos leads são protegidos.</small>
+    </section>
+  </main>
+
+  <div id="app-view" class="app-shell" hidden>
+    <header class="topbar">
+      <a class="brand" href="/">
+        <svg width="30" height="30" viewBox="0 0 130 130" aria-hidden="true"><rect width="130" height="130" rx="30" fill="#191D23"/><g fill="none" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"><path d="M32 112 L65 82 L98 112" stroke="#0E9E6E"/><path d="M32 84 L65 54 L98 84" stroke="#12E29A"/><path d="M32 56 L65 26 L98 56" stroke="#FAFBF9"/></g></svg>
+        tropa<span>.</span>
+      </a>
+      <div class="top-actions"><span id="user-email"></span><button id="logout" class="quiet">Sair</button></div>
+    </header>
+
+    <main class="workspace">
+      <div class="page-title">
+        <div><h1>Leads</h1><p>Acompanhe cada conversa do primeiro contato ao fechamento.</p></div>
+        <button id="refresh" class="quiet">Atualizar</button>
+      </div>
+
+      <section id="metrics" class="metrics" aria-label="Resumo do funil"></section>
+
+      <div class="toolbar">
+        <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar nome, empresa, TikTok ou WhatsApp"></label>
+        <label>Tipo<select id="filter-type"><option value="">Todos</option><option value="marca">Marcas</option><option value="creator">Creators</option></select></label>
+        <label>Status<select id="filter-status"><option value="">Todos</option><option value="novo">Novo</option><option value="contato">Em contato</option><option value="qualificado">Qualificado</option><option value="proposta">Proposta</option><option value="ganho">Ganho</option><option value="perdido">Perdido</option></select></label>
+      </div>
+
+      <section class="table-wrap">
+        <div id="loading" class="loading" aria-live="polite">Carregando leads…</div>
+        <div id="empty" class="empty" hidden><h2>Nenhum lead encontrado</h2><p>Ajuste os filtros ou aguarde novos cadastros do site.</p></div>
+        <table id="leads-table" hidden>
+          <thead><tr><th>Lead</th><th>Tipo</th><th>Status</th><th>Origem</th><th>Entrada</th><th><span class="sr-only">Ações</span></th></tr></thead>
+          <tbody id="leads-body"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="lead-dialog">
+    <form method="dialog" class="dialog-head"><div><span id="dialog-kind" class="badge"></span><h2 id="dialog-name"></h2></div><button class="icon-btn" aria-label="Fechar">×</button></form>
+    <div class="dialog-body">
+      <div id="lead-contact" class="contact-actions"></div>
+      <div class="detail-grid" id="lead-details"></div>
+      <label>Status<select id="edit-status"><option value="novo">Novo</option><option value="contato">Em contato</option><option value="qualificado">Qualificado</option><option value="proposta">Proposta</option><option value="ganho">Ganho</option><option value="perdido">Perdido</option></select></label>
+      <label>Notas<textarea id="edit-notes" rows="5" placeholder="Registre contexto, objeções e próximos passos…"></textarea></label>
+      <p id="save-error" class="error" role="alert"></p>
+      <button id="save-lead" type="button">Salvar alterações</button>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="painel.js"></script>
+</body>
+</html>

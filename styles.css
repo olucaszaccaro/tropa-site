@@ -75,10 +75,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 
 /* reconhecimento institucional */
 .recognition{display:grid;grid-template-columns:280px 1fr;gap:clamp(32px,6vw,84px);align-items:center;padding-block:56px;border-bottom:1px solid var(--line)}
-.recognition-mark{display:grid;grid-template-columns:auto auto;justify-content:start;align-items:baseline;column-gap:10px;color:var(--off);font-family:var(--display);line-height:1}
-.recognition-mark span{font-size:32px;font-weight:700;letter-spacing:-.035em}
-.recognition-mark strong{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:var(--ink);font-size:19px;letter-spacing:-.02em;padding:7px 8px;border-radius:7px}
-.recognition-mark small{grid-column:1/-1;margin-top:10px;color:var(--mut);font-family:var(--body);font-size:11px;line-height:1.4;letter-spacing:.03em}
+.recognition-mark{display:flex;flex-direction:column;align-items:flex-start;color:var(--off);line-height:1}
+.recognition-mark img{display:block;width:min(100%,250px);height:auto}
+.recognition-mark small{margin-top:10px;color:var(--mut);font-family:var(--body);font-size:11px;line-height:1.4;letter-spacing:.03em}
 .recognition-copy{max-width:680px}
 .recognition-label{color:var(--green);font-size:13px;font-weight:700;margin-bottom:7px}
 .recognition h2{font-family:var(--display);font-size:clamp(25px,3vw,38px);line-height:1.08;letter-spacing:-.025em;text-wrap:balance}
@@ -303,7 +302,7 @@ footer .meta{font-family:var(--mono);font-size:13px;color:var(--mut);text-align:
   .method-head .sub{font-size:10px}
   .section{padding-block:60px}
   .recognition{padding-block:42px}
-  .recognition-mark span{font-size:28px}
+  .recognition-mark img{width:min(100%,230px)}
   .section .intro{font-size:17px}
   .door{min-height:0;padding:28px 24px;border-radius:16px}
   .door h3{font-size:34px}

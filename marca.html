@@ -83,8 +83,8 @@
       <div>
         <form class="lead" data-table="leads_marca">
           <div class="row">
-            <div class="fld"><label for="marca-empresa">Empresa</label><input id="marca-empresa" name="empresa" required placeholder="Nome da marca"></div>
-            <div class="fld"><label for="marca-nome">Seu nome</label><input id="marca-nome" name="nome" required placeholder="Quem fala"></div>
+            <div class="fld"><label for="marca-empresa">Empresa</label><input id="marca-empresa" name="empresa" autocomplete="organization" required placeholder="Nome da marca"></div>
+            <div class="fld"><label for="marca-nome">Seu nome</label><input id="marca-nome" name="nome" autocomplete="name" required placeholder="Quem fala"></div>
           </div>
           <div class="row">
             <div class="fld"><label for="marca-segmento">Segmento</label>
@@ -95,10 +95,11 @@
             </div>
           </div>
           <div class="row">
-            <div class="fld"><label for="marca-whatsapp">WhatsApp</label><input id="marca-whatsapp" name="whatsapp" required placeholder="(00) 00000-0000"></div>
-            <div class="fld"><label for="marca-email">E-mail</label><input id="marca-email" name="email" type="email" placeholder="voce@empresa.com"></div>
+            <div class="fld"><label for="marca-whatsapp">WhatsApp</label><input id="marca-whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(00) 00000-0000"></div>
+            <div class="fld"><label for="marca-email">E-mail</label><input id="marca-email" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com"></div>
           </div>
           <button class="btn btn--lg" type="submit">Quero vender com creators</button>
+          <p class="form-note">Ao enviar, você concorda com nossa <a href="privacidade.html">Política de Privacidade</a>.</p>
         </form>
         <div class="form-ok">
           <div class="big">Recebido! 🚀</div>
@@ -122,7 +123,7 @@
         <a href="https://www.tiktok.com/@tropa.agencia" target="_blank" rel="noopener noreferrer">TikTok</a>
         <a href="https://www.linkedin.com/company/tropa-creators/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
-      <div class="meta">@tropa.agencia · Agência de creators · TikTok Shop · © 2026</div>
+      <div class="meta"><a href="privacidade.html">Privacidade</a> · @tropa.agencia · Agência de creators · TikTok Shop · © 2026</div>
     </div>
   </div>
 </footer>

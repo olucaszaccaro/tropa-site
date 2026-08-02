@@ -1,42 +1,20 @@
 # Tropa — Site (somostropa.com.br)
 
-Site institucional com **home + duas portas** (Sou Creator / Sou Marca), formulários prontos pro Supabase e CTAs de WhatsApp.
+Site institucional com **home + duas portas** (Sou Creator / Sou Marca), materiais, cases, formulários integrados ao Supabase, CTAs de WhatsApp e CRM protegido.
 
 ## Arquivos
 - `index.html` — home (hero com ticker de vendas ao vivo + as duas portas).
 - `creator.html` — captação de creators (benefícios, requisitos, FAQ, formulário).
 - `marca.html` — comercial para marcas (entregas, método, formulário).
 - `styles.css` — sistema de design (cores, tipografia, componentes).
-- `app.js` — ticker ao vivo + envio dos formulários (Supabase) + links de WhatsApp.
+- `app.js` — envio dos formulários para `crm_leads`, atribuição de origem/UTMs e links de WhatsApp.
+- `painel.html` — CRM em `painel.somostropa.com.br`.
 
-## Antes de publicar — preencher em `app.js`
-No topo do arquivo, no objeto `TROPA`:
-```js
-whatsapp: "55DDDXXXXXXXXX",   // seu número
-supabaseUrl: "https://xxxx.supabase.co",
-supabaseAnonKey: "sua-chave-anon-publica",
-```
-Sem o Supabase preenchido, o site funciona normalmente — o lead é só registrado no console e o usuário segue pelo WhatsApp.
+## Configuração
+O WhatsApp e o projeto Supabase de produção ficam no objeto `TROPA`, no início de `app.js`. A chave usada no navegador é a chave pública `anon`; a proteção dos dados depende das políticas RLS definidas no banco.
 
-## Supabase — criar as tabelas (SQL)
-No Supabase → SQL Editor, rode:
-```sql
-create table leads_creator (
-  id uuid primary key default gen_random_uuid(),
-  nome text, tiktok text, seguidores text, nicho text, whatsapp text,
-  criado_em timestamptz default now()
-);
-create table leads_marca (
-  id uuid primary key default gen_random_uuid(),
-  empresa text, nome text, segmento text, ja_vende text,
-  whatsapp text, email text, criado_em timestamptz default now()
-);
-alter table leads_creator enable row level security;
-alter table leads_marca  enable row level security;
-create policy "insert_creator" on leads_creator for insert to anon with check (true);
-create policy "insert_marca"   on leads_marca   for insert to anon with check (true);
-```
-(Política só de INSERT para o público; leitura fica restrita ao painel do Supabase.)
+## Supabase
+Para preparar um projeto novo, execute `supabase/crm_leads.sql` no SQL Editor. Os formulários públicos podem inserir em `crm_leads`; leitura e atualização ficam restritas aos usuários cadastrados em `crm_admins`.
 
 ## Testar localmente
 Abra `index.html` no navegador (duplo clique). Tudo funciona sem servidor.
@@ -47,7 +25,7 @@ Abra `index.html` no navegador (duplo clique). Tudo funciona sem servidor.
 3. Em Domains, adicione **somostropa.com.br** e aponte o DNS conforme a Vercel indicar.
 4. Crie as tabelas no **Supabase** (SQL acima) e cole as chaves no `app.js`.
 
-## A fazer (conteúdo)
-- Trocar `[WhatsApp]` / `@somos.tropa` / e-mail pelos reais.
-- Substituir as estatísticas placeholder (`+0 creators`, `R$ 0`) quando tiver números.
-- Trocar o ticker de vendas (em `app.js`, lista `SALES`) por exemplos reais quando quiser.
+## Verificação antes de publicar
+- Testar as páginas em 320 px, 390 px, tablet e desktop.
+- Enviar um lead de creator e um de marca, confirmar no CRM e remover os registros de teste.
+- Conferir links de WhatsApp, downloads e páginas de privacidade.

@@ -43,12 +43,13 @@
         <p class="sub">Preenche rapidinho e o PDF é seu. A Tropa manda material novo toda semana pra quem entra.</p>
         <form class="lead" data-table="leads_creator" data-download="50_Ganchos_Que_Seguram_o_Dedo.pdf">
           <input type="hidden" name="material" value="50 Ganchos">
-          <div class="fld"><label for="lp-nome">Nome</label><input id="lp-nome" name="nome" required placeholder="Seu nome"></div>
+          <div class="fld"><label for="lp-nome">Nome</label><input id="lp-nome" name="nome" autocomplete="name" required placeholder="Seu nome"></div>
           <div class="row">
             <div class="fld"><label for="lp-tt">@ no TikTok</label><input id="lp-tt" name="tiktok" placeholder="@seuusuario"></div>
-            <div class="fld"><label for="lp-wa">WhatsApp</label><input id="lp-wa" name="whatsapp" required placeholder="(00) 00000-0000"></div>
+            <div class="fld"><label for="lp-wa">WhatsApp</label><input id="lp-wa" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(00) 00000-0000"></div>
           </div>
           <button class="btn btn--lg" type="submit">Quero os 50 ganchos</button>
+          <p class="form-note">Ao enviar, você concorda com nossa <a href="privacidade.html">Política de Privacidade</a>.</p>
         </form>
         <div class="form-ok">
           <div class="big">Prontinho! 🎉</div>
@@ -85,7 +86,7 @@
         <a href="https://www.tiktok.com/@tropa.agencia" target="_blank" rel="noopener noreferrer">TikTok</a>
         <a href="https://www.linkedin.com/company/tropa-creators/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
-      <div class="meta">@tropa.agencia · Agência de creators · TikTok Shop · © 2026</div>
+      <div class="meta"><a href="privacidade.html">Privacidade</a> · @tropa.agencia · Agência de creators · TikTok Shop · © 2026</div>
     </div>
   </div>
 </footer>

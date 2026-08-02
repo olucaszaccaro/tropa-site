@@ -104,7 +104,7 @@
       </div>
       <div>
         <form class="lead" data-table="leads_creator">
-          <div class="fld"><label for="creator-nome">Nome</label><input id="creator-nome" name="nome" required placeholder="Seu nome"></div>
+          <div class="fld"><label for="creator-nome">Nome</label><input id="creator-nome" name="nome" autocomplete="name" required placeholder="Seu nome"></div>
           <div class="row">
             <div class="fld"><label for="creator-tiktok">@ no TikTok</label><input id="creator-tiktok" name="tiktok" required placeholder="@seuusuario"></div>
             <div class="fld"><label for="creator-seguidores">Seguidores</label><input id="creator-seguidores" name="seguidores" inputmode="numeric" placeholder="ex: 3.000"></div>
@@ -113,9 +113,10 @@
             <div class="fld"><label for="creator-nicho">Nicho</label>
               <select id="creator-nicho" name="nicho"><option value="">Selecione</option><option>Beleza & skincare</option><option>Casa & utilidades</option><option>Fitness & saúde</option><option>Moda & acessórios</option><option>Tech & gadgets</option><option>Outro</option></select>
             </div>
-            <div class="fld"><label for="creator-whatsapp">WhatsApp</label><input id="creator-whatsapp" name="whatsapp" required placeholder="(00) 00000-0000"></div>
+            <div class="fld"><label for="creator-whatsapp">WhatsApp</label><input id="creator-whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(00) 00000-0000"></div>
           </div>
           <button class="btn btn--lg" type="submit">Quero entrar pra Tropa</button>
+          <p class="form-note">Ao enviar, você concorda com nossa <a href="privacidade.html">Política de Privacidade</a>.</p>
         </form>
         <div class="form-ok">
           <div class="big">Recebido! 🎉</div>
@@ -139,7 +140,7 @@
         <a href="https://www.tiktok.com/@tropa.agencia" target="_blank" rel="noopener noreferrer">TikTok</a>
         <a href="https://www.linkedin.com/company/tropa-creators/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
-      <div class="meta">@tropa.agencia · Agência de creators · TikTok Shop · © 2026</div>
+      <div class="meta"><a href="privacidade.html">Privacidade</a> · @tropa.agencia · Agência de creators · TikTok Shop · © 2026</div>
     </div>
   </div>
 </footer>

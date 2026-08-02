@@ -22,13 +22,19 @@ async function saveLead(table, payload){
     try{
       const lead = {
         tipo: table === "leads_marca" ? "marca" : "creator",
-        origem: payload.material ? "material" : "site",
+        origem: payload.material ? `material: ${payload.material}` : location.pathname.replace(/^\//, "") || "home",
         nome: payload.nome || null,
         email: payload.email || null,
         whatsapp: payload.whatsapp || null,
         empresa: payload.empresa || null,
         tiktok: payload.tiktok || null,
-        dados: payload
+        dados: {
+          ...payload,
+          pagina: location.pathname,
+          utm_source: new URLSearchParams(location.search).get("utm_source") || null,
+          utm_medium: new URLSearchParams(location.search).get("utm_medium") || null,
+          utm_campaign: new URLSearchParams(location.search).get("utm_campaign") || null
+        }
       };
       const res = await fetch(`${TROPA.supabaseUrl}/rest/v1/crm_leads`,{
         method:"POST",
@@ -54,10 +60,14 @@ document.querySelectorAll("form.lead").forEach(form=>{
     const data = Object.fromEntries(new FormData(form).entries());
     data.criado_em = new Date().toISOString();
     const btn = form.querySelector("button[type=submit]");
+    const originalLabel = btn?.textContent;
+    form.setAttribute("aria-busy", "true");
+    form.querySelector(".form-error")?.remove();
     if(btn){ btn.disabled = true; btn.textContent = "Enviando…"; }
     const saved = await saveLead(table, data);
     if(!saved){
-      if(btn){ btn.disabled = false; btn.textContent = "Tentar novamente"; }
+      form.removeAttribute("aria-busy");
+      if(btn){ btn.disabled = false; btn.textContent = originalLabel || "Tentar novamente"; }
       let error = form.querySelector(".form-error");
       if(!error){
         error = document.createElement("p");
@@ -68,6 +78,7 @@ document.querySelectorAll("form.lead").forEach(form=>{
       error.textContent = "Não foi possível enviar agora. Tente novamente ou fale com a Tropa pelo WhatsApp.";
       return;
     }
+    form.removeAttribute("aria-busy");
     form.style.display = "none";
     const ok = form.parentElement.querySelector(".form-ok");
     const download = form.getAttribute("data-download");

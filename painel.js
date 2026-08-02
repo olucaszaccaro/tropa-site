@@ -98,7 +98,7 @@ function openLead(lead){
 $("#login-form").addEventListener("submit",async event=>{
   event.preventDefault(); const button=event.currentTarget.querySelector("button"); button.disabled=true; button.textContent="Entrando…"; $("#login-error").textContent="";
   const data=new FormData(event.currentTarget);
-  try{ await login(data.get("email"),data.get("password")); await startApp(); }
+  try{ await login(data.get("email"),data.get("password")); event.currentTarget.reset(); await startApp(); }
   catch(error){ $("#login-error").textContent=error.message; }
   finally{ button.disabled=false; button.textContent="Entrar no painel"; }
 });

@@ -5,6 +5,9 @@ const statuses = {novo:"Novo",contato:"Em contato",qualificado:"Qualificado",pro
 let session = JSON.parse(localStorage.getItem(SESSION_KEY) || "null");
 let leads = [];
 let currentLead = null;
+const authHash = new URLSearchParams(location.hash.slice(1));
+const inviteToken = authHash.get("access_token");
+const authFlowType = authHash.get("type");
 
 const $ = (selector) => document.querySelector(selector);
 const request = async (endpoint, options = {}) => {
@@ -99,6 +102,25 @@ $("#login-form").addEventListener("submit",async event=>{
   catch(error){ $("#login-error").textContent=error.message; }
   finally{ button.disabled=false; button.textContent="Entrar no painel"; }
 });
+$("#setup-form").addEventListener("submit",async event=>{
+  event.preventDefault();
+  const button=event.currentTarget.querySelector("button");
+  const data=new FormData(event.currentTarget);
+  const password=data.get("password"), confirmation=data.get("confirm_password");
+  $("#setup-error").textContent="";
+  if(password!==confirmation){ $("#setup-error").textContent="As senhas não coincidem."; return; }
+  button.disabled=true; button.textContent="Salvando…";
+  try{
+    const response=await fetch(`${SB_URL}/auth/v1/user`,{method:"PUT",headers:{"apikey":SB_KEY,"Authorization":`Bearer ${inviteToken}`,"Content-Type":"application/json"},body:JSON.stringify({password})});
+    if(!response.ok) throw new Error("O convite expirou ou já foi usado. Solicite um novo convite.");
+    history.replaceState(null,"",location.pathname);
+    $("#setup-view").hidden=true; $("#login-copy").hidden=false; $("#login-form").hidden=false;
+    $("#login-title").textContent="Senha criada";
+    $("#login-copy p").textContent="Agora entre com seu e-mail e a senha que acabou de definir.";
+    $("#access-note").textContent="Seu acesso administrativo está pronto.";
+  }catch(error){ $("#setup-error").textContent=error.message; }
+  finally{ button.disabled=false; button.textContent="Salvar senha"; }
+});
 $("#logout").addEventListener("click",logout);
 $("#refresh").addEventListener("click",loadLeads);
 ["#search","#filter-type","#filter-status"].forEach(selector=>$(selector).addEventListener("input",render));
@@ -113,4 +135,8 @@ $("#save-lead").addEventListener("click",async()=>{
 async function startApp(){
   $("#login-view").hidden=true; $("#app-view").hidden=false; $("#user-email").textContent=session.user.email; await loadLeads();
 }
-if(session?.access_token) startApp(); else logout();
+if(inviteToken && ["invite","recovery"].includes(authFlowType)){
+  session=null; localStorage.removeItem(SESSION_KEY);
+  $("#login-copy").hidden=true; $("#login-form").hidden=true; $("#setup-view").hidden=false;
+  $("#access-note").textContent="O link é pessoal e expira por segurança.";
+}else if(session?.access_token) startApp(); else logout();

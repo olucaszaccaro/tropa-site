@@ -17,7 +17,7 @@
         <svg width="38" height="38" viewBox="0 0 130 130" aria-hidden="true"><rect width="130" height="130" rx="30" fill="#191D23"/><g fill="none" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"><path d="M32 112 L65 82 L98 112" stroke="#0E9E6E"/><path d="M32 84 L65 54 L98 84" stroke="#12E29A"/><path d="M32 56 L65 26 L98 56" stroke="#FAFBF9"/></g></svg>
         tropa<span>.</span>
       </a>
-      <div>
+      <div id="login-copy">
         <h1 id="login-title">Painel de leads</h1>
         <p>Entre com sua conta administrativa da Tropa.</p>
       </div>
@@ -27,7 +27,19 @@
         <p id="login-error" class="error" role="alert"></p>
         <button type="submit">Entrar no painel</button>
       </form>
-      <small>Acesso restrito · Os dados dos leads são protegidos.</small>
+      <div id="setup-view" hidden>
+        <div>
+          <h1>Crie sua senha</h1>
+          <p>Defina a senha que você usará para entrar no CRM da Tropa.</p>
+        </div>
+        <form id="setup-form">
+          <label>Nova senha<input name="password" type="password" autocomplete="new-password" minlength="8" required placeholder="Mínimo de 8 caracteres"></label>
+          <label>Confirmar senha<input name="confirm_password" type="password" autocomplete="new-password" minlength="8" required placeholder="Repita a senha"></label>
+          <p id="setup-error" class="error" role="alert"></p>
+          <button type="submit">Salvar senha</button>
+        </form>
+      </div>
+      <small id="access-note">Acesso restrito · Os dados dos leads são protegidos.</small>
     </section>
   </main>
 
